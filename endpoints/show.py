@@ -1,8 +1,4 @@
-from typing import Union
-
-from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
 
 from enum import Enum
 
@@ -14,36 +10,7 @@ from pathlib import Path
 from collage import make_collage, save_collage
 import db
 
-app = FastAPI()
-
-
-class Closet(BaseModel):
-    description: Union[str, None] = None
-    closet_size: int
-    winter_looks: int
-    summer_looks: int
-
-
-@app.get("/")
-async def main():
-    resp = Closet(
-        description="Welcome to my web closet!! (^o^)/",
-        closet_size=len(db.closet()),
-        summer_looks=db.summer_looks(),
-        winter_looks=db.winter_looks(),
-    )
-    return resp
-
-
-@app.get("/closet")
-async def closet():
-    pic = make_collage(db.closet())
-
-    prefix = os.path.join("out", "closet")
-    Path(prefix).mkdir(parents=True, exist_ok=True)
-
-    path = save_collage(pic, prefix)
-    return FileResponse(path)
+from main import app
 
 
 class ItemType(str, Enum):

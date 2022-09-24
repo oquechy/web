@@ -1,3 +1,4 @@
+from fastapi import APIRouter
 from fastapi.responses import FileResponse
 
 from enum import Enum
@@ -7,10 +8,39 @@ import random
 import os
 from pathlib import Path
 
-from collage import make_collage, save_collage
-import db
+from app.collage import make_collage, save_collage
+import app.db as db
 
-from main import app
+router = APIRouter()
+
+
+class ItemType(str, Enum):
+    top = "top"
+    bottom = "bottom"
+    shoes = "shoes"
+    hats = "hats"
+    bags = "bags"
+    outwear = "outwear"
+    accessories = "accessories"
+
+
+@router.get("/show/{type}/{item_id}")
+async def show(type: ItemType, item_id: int):
+    match type:
+        case ItemType.top:
+            return FileResponse(db.top()[item_id])
+        case ItemType.bottom:
+            return FileResponse(db.bottom()[item_id])
+        case ItemType.shoes:
+            return FileResponse(db.shoes()[item_id])
+        case ItemType.hats:
+            return FileResponse(db.hats()[item_id])
+        case ItemType.bags:
+            return FileResponse(db.bags()[item_id])
+        case ItemType.outwear:
+            return FileResponse(db.outwear()[item_id])
+        case _:
+            return {"unknown type": type}
 
 
 class Season(str, Enum):
@@ -18,7 +48,7 @@ class Season(str, Enum):
     winter = "winter"
 
 
-@app.get("/randomize/")
+@router.get("/randomize/")
 async def randomize(season: Season):
     imgs = []
     match season:

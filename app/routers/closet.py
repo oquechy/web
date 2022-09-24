@@ -1,15 +1,16 @@
+from fastapi import APIRouter
 from fastapi.responses import FileResponse
 
 import os
 from pathlib import Path
 
-from collage import make_collage, save_collage
-import db
+from app.collage import make_collage, save_collage
+import app.db as db
 
-from main import app
+router = APIRouter()
 
 
-@app.get("/closet")
+@router.get("/closet")
 async def closet():
     pic = make_collage(db.closet())
 

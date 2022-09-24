@@ -1,10 +1,12 @@
+from fastapi import APIRouter
+
 from typing import Union
 
 from pydantic import BaseModel
 
-import db
+import app.db as db
 
-from main import app
+router = APIRouter()
 
 
 class Closet(BaseModel):
@@ -14,7 +16,7 @@ class Closet(BaseModel):
     summer_looks: int
 
 
-@app.get("/")
+@router.get("/")
 async def main():
     resp = Closet(
         description="Welcome to my web closet!! (^o^)/",

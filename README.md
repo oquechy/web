@@ -2,7 +2,7 @@
 
 1. Start 
 
-        uvicorn main:app --reload
+        uvicorn app.main:app --reload
 
 1. See the API at http://127.0.0.1:8000/docs
 

@@ -4,9 +4,19 @@
 
         uvicorn app.main:app --reload
 
-1. Run tests
+1. Run tests:
         
         pytest   
+        
+   Unit only:
+
+        pytest --without-integration --without-slow-integration
+
+   Integration only:
+
+        pytest app/integration_test.py 
+
+
 
 1. See the API at http://127.0.0.1:8000/docs
 

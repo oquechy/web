@@ -24,8 +24,10 @@ def closet():
 def pics(dir):
     exts = ("jpg", "jpeg", "png", "webp")
     files = os.listdir(os.path.join("images", dir))
-    return [os.path.join("images", dir, f)
-            for f in files if f.lower().endswith(exts)]
+    ps = [os.path.join("images", dir, f)
+          for f in files if f.lower().endswith(exts)]
+    ps.sort()
+    return ps
 
 
 def top():

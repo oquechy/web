@@ -133,3 +133,4 @@ dmypy.json
 
 # Generated files
 out/*
+test/out/*

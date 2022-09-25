@@ -1,9 +1,10 @@
 import cv2
 import numpy as np
 import os
+from pathlib import Path
 
 
-def same_w(im_list, interpolation=cv2.INTER_CUBIC):
+def same_w(im_list, interpolation=cv2.INTER_LINEAR_EXACT):
     w_max = max(im.shape[1] for im in im_list)
     return [cv2.resize(im,
                        (w_max, int(im.shape[0]
@@ -12,7 +13,7 @@ def same_w(im_list, interpolation=cv2.INTER_CUBIC):
             for im in im_list]
 
 
-def same_h(im_list, interpolation=cv2.INTER_CUBIC):
+def same_h(im_list, interpolation=cv2.INTER_LINEAR_EXACT):
     h_max = max(im.shape[0] for im in im_list)
     return [cv2.resize(im,
                        (int(im.shape[1] * h_max / im.shape[0]),
@@ -43,6 +44,7 @@ def make_collage(pics):
 
 
 def save_collage(pic, prefix):
+    Path(prefix).mkdir(parents=True, exist_ok=True)
     path = os.path.join(prefix, str(hash(str(pic))) + ".jpg")
     cv2.imwrite(path, pic)
     return path

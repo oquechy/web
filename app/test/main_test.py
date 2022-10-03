@@ -65,7 +65,7 @@ def test_randomize_summer():
 
     image_np = np.frombuffer(response.content, np.uint8)
     got = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
-    helper.cv2_size(got, 3000, 1500)
+    helper.cv2_size(got, 2500, 1500)
 
 
 def test_randomize_winter():
@@ -75,7 +75,7 @@ def test_randomize_winter():
 
     image_np = np.frombuffer(response.content, np.uint8)
     got = cv2.imdecode(image_np, cv2.IMREAD_COLOR)
-    helper.cv2_size(got, 3000, 2000)
+    helper.cv2_size(got, 2500, 2000)
 
 
 def test_show():

@@ -19,7 +19,15 @@ class Season(str, Enum):
 
 
 @router.get("/randomize/")
-async def randomize(season: Season):
+async def randomize(season: Season) -> FileResponse:
+    """Generates a random outfit for the chosen season.
+
+    Args:
+        season (Season): Can be "summer" or "winter".
+
+    Returns:
+        FileResponse: Image of the outfit.
+    """
     imgs = []
     match season:
         case Season.summer:

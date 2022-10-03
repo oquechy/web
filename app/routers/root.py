@@ -17,7 +17,13 @@ class Closet(BaseModel):
 
 
 @router.get("/")
-async def main():
+async def main() -> Closet:
+    """Returns information about size of the closet and number of possible 
+    outfits.
+
+    Returns:
+        Closet: Info record.
+    """
     resp = Closet(
         description="Welcome to my web closet!! (^o^)/",
         closet_size=len(db.closet()),

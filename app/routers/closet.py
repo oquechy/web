@@ -10,7 +10,12 @@ router = APIRouter()
 
 
 @router.get("/closet")
-async def closet():
+async def closet() -> FileResponse:
+    """Creates a collage from all wardrobe items.
+
+    Returns:
+        FileResponse: Image.
+    """
     pic = make_collage(db.closet())
 
     prefix = os.path.join("out", "closet")

@@ -19,7 +19,19 @@ class ItemType(str, Enum):
     accessories = "accessories"
 
 
-def at_index(items, item_id):
+def at_index(items: list[str], item_id: int) -> FileResponse:
+    """Performs checked indexing of the list of images.
+
+    Args:
+        items (list[str]): List of image files.
+        item_id (int): Index.
+
+    Raises:
+        HTTPException: Status 422. List out of bounds error.
+
+    Returns:
+        FileResponse: Image.
+    """
     n = len(items)
     if not (0 <= item_id < n):
         raise HTTPException(status_code=422,
@@ -29,7 +41,17 @@ def at_index(items, item_id):
 
 
 @router.get("/show/{type}/{item_id}")
-async def show(type: ItemType, item_id: int):
+async def show(type: ItemType, item_id: int) -> FileResponse:
+    """Returns a wardrobe item by its type and index position.
+
+    Args:
+        type (ItemType): Can be "top", "bottom", "shoes", "hats", "bags", 
+        "outwear", or "accessories".
+        item_id (int): Serial number.
+
+    Returns:
+        FileResponse: Image.
+    """
     match type:
         case ItemType.top:
             return at_index(db.top(), item_id)

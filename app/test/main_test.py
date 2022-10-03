@@ -4,10 +4,10 @@ import numpy as np
 import cv2
 import os
 
-from .main import app
-from . import db
+from ..main import app
+from .. import db
 
-from . import helper
+from .. import helper
 
 import logging
 

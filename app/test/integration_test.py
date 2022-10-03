@@ -3,8 +3,8 @@ from fastapi.testclient import TestClient
 import random
 
 
-from .main import app
-from . import db
+from ..main import app
+from .. import db
 
 
 import pytest

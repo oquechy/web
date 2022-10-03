@@ -4,10 +4,10 @@ import random
 
 from os.path import join
 
-from . import db
-from . import helper
+from .. import db
+from .. import helper
 
-from .collage import same_w, same_h, remove_alpha, make_collage, save_collage
+from ..collage import same_w, same_h, remove_alpha, make_collage, save_collage
 
 
 def test_same_w():

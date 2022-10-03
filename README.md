@@ -14,7 +14,7 @@
 
    Integration only:
 
-        pytest app/integration_test.py 
+        pytest app/test/integration_test.py 
 
 
 

@@ -2,17 +2,25 @@
 
 1. Start 
 
-        uvicorn app.main:app --reload
+        python3 app/log_server.py
+
+        uvicorn app.closet_server:app --reload
 
 1. Run tests:
+
+        python3 app/log_server.py
         
         pytest   
         
    Unit only:
 
+        python3 app/log_server.py
+
         pytest --without-integration --without-slow-integration
 
    Integration only:
+
+        python3 app/log_server.py
 
         pytest app/test/integration_test.py 
 

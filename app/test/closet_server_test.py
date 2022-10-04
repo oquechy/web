@@ -4,14 +4,10 @@ import numpy as np
 import cv2
 import os
 
-from ..main import app
+from ..closet_server import app
 from .. import db
 
 from .. import helper
-
-import logging
-
-LOGGER = logging.getLogger(__name__)
 
 
 def test_root():

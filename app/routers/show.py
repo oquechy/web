@@ -6,6 +6,12 @@ from enum import Enum
 
 import app.db as db
 
+import grpc
+from ..grpc_logger.definitions.builds.service_pb2 import Msg
+from ..grpc_logger.definitions.builds.service_pb2_grpc import LogServiceStub
+
+LOGGER = LogServiceStub(grpc.insecure_channel("localhost:3000"))
+
 router = APIRouter()
 
 
@@ -52,6 +58,7 @@ async def show(type: ItemType, item_id: int) -> FileResponse:
     Returns:
         FileResponse: Image.
     """
+    LOGGER.Log(Msg(msg="fetch item"))
     match type:
         case ItemType.top:
             return at_index(db.top(), item_id)

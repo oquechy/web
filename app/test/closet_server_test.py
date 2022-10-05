@@ -89,7 +89,7 @@ def test_show_out_of_bound():
     response = client.get("/show/top/200")
     assert response.status_code == 422
     n = len(db.top())
-    assert "Expected 0 <= item_id < " + str(n) in response.json()["detail"]
+    assert "Expected 0 <= item_id <= " + str(n - 1) in response.json()["detail"]
 
 
 def test_show_no_args():

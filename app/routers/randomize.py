@@ -31,6 +31,7 @@ async def randomize(season: Season) -> FileResponse:
         FileResponse: Image of the outfit.
     """
     imgs = []
+    log(Level.INFO, "randomize outfit")
     match season:
         case Season.summer:
             imgs.append(random.choice(db.top()))
@@ -47,11 +48,11 @@ async def randomize(season: Season) -> FileResponse:
             imgs.append(random.choice(db.bags()))
 
         case _:
+            log(Level.ERRO, "unknown season", str(season))
             return {"unknown season": season}
 
     pic = make_collage(imgs)
 
     prefix = os.path.join("out", "randomize")
     path = save_collage(pic, prefix)
-    log(Level.INFO, "randomize outfit")
     return FileResponse(path)

@@ -36,9 +36,10 @@ def at_index(items: list[str], item_id: int) -> FileResponse:
     """
     n = len(items)
     if not (0 <= item_id < n):
-        raise HTTPException(status_code=422,
-                            detail="Expected 0 <= item_id < " + str(n)
-                            + ", got: " + str(item_id))
+        detail = "Expected 0 <= item_id <= " + \
+            str(n - 1) + ", got: " + str(item_id)
+        log(Level.ERRO, detail)
+        raise HTTPException(status_code=422, detail=detail)
     return FileResponse(items[item_id])
 
 
@@ -71,4 +72,5 @@ async def show(type: ItemType, item_id: int) -> FileResponse:
         case ItemType.accessories:
             return at_index(db.accessories(), item_id)
         case _:
+            log(Level.ERRO, "unknown type", str(type))
             return {"unknown type": type}

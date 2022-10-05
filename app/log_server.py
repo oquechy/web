@@ -16,7 +16,6 @@ class Service(LogServiceServicer):
         prefix = "out"
         Path(prefix).mkdir(parents=True, exist_ok=True)
         with open(os.path.join(prefix, "log"), "a") as f:
-            print(request.lvl)
             match request.lvl:
                 case 1:
                     print("INFO", request.msg, file=f)

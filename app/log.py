@@ -10,6 +10,6 @@ class Level(int, Enum):
     ERRO = 2
 
 
-def log(lvl: Level, msg: str):
+def log(lvl: Level, *msg: str):
     logger = LogServiceStub(grpc.insecure_channel("localhost:3000"))
-    logger.Log(Msg(lvl=lvl, msg=msg))
+    logger.Log(Msg(lvl=lvl, msg=" ".join(msg)))

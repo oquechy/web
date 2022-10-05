@@ -16,6 +16,8 @@ class TestSequence(unittest.TestCase):
         ["/favicon.ico", "INFO fetch favicon"],
         ["/randomize?season=summer", "INFO randomize outfit"],
         ["/show/top/2", "INFO fetch item"],
+        ["/show/top/200", "ERRO Expected 0 <= item_id <= 6, got: 200"],
+        ["/show/bottom/300", "ERRO Expected 0 <= item_id <= 3, got: 300"],
     ])
     def test_log(self, req, log):
         TestClient(app).get(req)

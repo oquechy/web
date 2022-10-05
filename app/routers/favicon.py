@@ -1,11 +1,8 @@
 from fastapi import APIRouter
 from fastapi.responses import FileResponse
 
-import grpc
-from ..grpc_logger.definitions.builds.service_pb2 import Msg
-from ..grpc_logger.definitions.builds.service_pb2_grpc import LogServiceStub
+from app.log import Level, log
 
-LOGGER = LogServiceStub(grpc.insecure_channel("localhost:3000"))
 
 router = APIRouter()
 
@@ -19,5 +16,5 @@ async def favicon() -> FileResponse:
     Returns:
         FileResponse: Image.
     """
-    LOGGER.Log(Msg(lvl=1, msg="fetch favicon"))
+    log(Level.INFO, "fetch favicon")
     return FileResponse(favicon_path)

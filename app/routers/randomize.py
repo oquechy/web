@@ -10,11 +10,7 @@ import os
 from app.collage import make_collage, save_collage
 import app.db as db
 
-import grpc
-from ..grpc_logger.definitions.builds.service_pb2 import Msg
-from ..grpc_logger.definitions.builds.service_pb2_grpc import LogServiceStub
-
-LOGGER = LogServiceStub(grpc.insecure_channel("localhost:3000"))
+from app.log import Level, log
 
 router = APIRouter()
 
@@ -57,5 +53,5 @@ async def randomize(season: Season) -> FileResponse:
 
     prefix = os.path.join("out", "randomize")
     path = save_collage(pic, prefix)
-    LOGGER.Log(Msg(lvl=1, msg="randomize outfit"))
+    log(Level.INFO, "randomize outfit")
     return FileResponse(path)

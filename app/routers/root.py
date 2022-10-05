@@ -6,11 +6,7 @@ from pydantic import BaseModel
 
 import app.db as db
 
-import grpc
-from ..grpc_logger.definitions.builds.service_pb2 import Msg
-from ..grpc_logger.definitions.builds.service_pb2_grpc import LogServiceStub
-
-LOGGER = LogServiceStub(grpc.insecure_channel("localhost:3000"))
+from app.log import Level, log
 
 router = APIRouter()
 
@@ -36,5 +32,5 @@ async def main() -> Closet:
         summer_looks=db.summer_looks(),
         winter_looks=db.winter_looks(),
     )
-    LOGGER.Log(Msg(lvl=1, msg="fetch stats"))
+    log(Level.INFO, "fetch stats")
     return resp

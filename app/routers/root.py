@@ -36,5 +36,5 @@ async def main() -> Closet:
         summer_looks=db.summer_looks(),
         winter_looks=db.winter_looks(),
     )
-    LOGGER.Log(Msg(msg="fetch stats"))
+    LOGGER.Log(Msg(lvl=1, msg="fetch stats"))
     return resp

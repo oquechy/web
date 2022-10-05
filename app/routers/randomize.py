@@ -57,5 +57,5 @@ async def randomize(season: Season) -> FileResponse:
 
     prefix = os.path.join("out", "randomize")
     path = save_collage(pic, prefix)
-    LOGGER.Log(Msg(msg="randomize outfit"))
+    LOGGER.Log(Msg(lvl=1, msg="randomize outfit"))
     return FileResponse(path)

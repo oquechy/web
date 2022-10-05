@@ -2,8 +2,15 @@ syntax = "proto3";
 
 message Null {}
 
+enum Level {
+  LEVEL_UNSPECIFIED = 0;
+  LEVEL_INFO = 1;
+  LEVEL_ERROR = 2;
+}
+
 message Msg {
   string msg = 1;
+  Level lvl = 2;
 }
 
 service LogService {

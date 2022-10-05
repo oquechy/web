@@ -11,11 +11,11 @@ prefix = "out"
 
 class TestSequence(unittest.TestCase):
     @parameterized.expand([
-        ["/", "fetch stats"],
-        ["/closet", "fetch closet"],
-        ["/favicon.ico", "fetch favicon"],
-        ["/randomize?season=summer", "randomize outfit"],
-        ["/show/top/2", "fetch item"],
+        ["/", "INFO fetch stats"],
+        ["/closet", "INFO fetch closet"],
+        ["/favicon.ico", "INFO fetch favicon"],
+        ["/randomize?season=summer", "INFO randomize outfit"],
+        ["/show/top/2", "INFO fetch item"],
     ])
     def test_log(self, req, log):
         TestClient(app).get(req)

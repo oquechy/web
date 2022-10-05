@@ -26,5 +26,5 @@ async def closet() -> FileResponse:
 
     prefix = os.path.join("out", "closet")
     path = save_collage(pic, prefix)
-    LOGGER.Log(Msg(msg="fetch closet"))
+    LOGGER.Log(Msg(lvl=1, msg="fetch closet"))
     return FileResponse(path)

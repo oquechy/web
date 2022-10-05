@@ -58,7 +58,7 @@ async def show(type: ItemType, item_id: int) -> FileResponse:
     Returns:
         FileResponse: Image.
     """
-    LOGGER.Log(Msg(msg="fetch item"))
+    LOGGER.Log(Msg(lvl=1, msg="fetch item"))
     match type:
         case ItemType.top:
             return at_index(db.top(), item_id)

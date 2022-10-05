@@ -13,17 +13,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\"\x06\n\x04Null\"\x12\n\x03Msg\x12\x0b\n\x03msg\x18\x01 \x01(\t2 \n\nLogService\x12\x12\n\x03Log\x12\x04.Msg\x1a\x05.Nullb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\"\x06\n\x04Null\"\'\n\x03Msg\x12\x0b\n\x03msg\x18\x01 \x01(\t\x12\x13\n\x03lvl\x18\x02 \x01(\x0e\x32\x06.Level*?\n\x05Level\x12\x15\n\x11LEVEL_UNSPECIFIED\x10\x00\x12\x0e\n\nLEVEL_INFO\x10\x01\x12\x0f\n\x0bLEVEL_ERROR\x10\x02\x32 \n\nLogService\x12\x12\n\x03Log\x12\x04.Msg\x1a\x05.Nullb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'service_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
+  _LEVEL._serialized_start=66
+  _LEVEL._serialized_end=129
   _NULL._serialized_start=17
   _NULL._serialized_end=23
   _MSG._serialized_start=25
-  _MSG._serialized_end=43
-  _LOGSERVICE._serialized_start=45
-  _LOGSERVICE._serialized_end=77
+  _MSG._serialized_end=64
+  _LOGSERVICE._serialized_start=131
+  _LOGSERVICE._serialized_end=163
 # @@protoc_insertion_point(module_scope)

@@ -19,5 +19,5 @@ async def favicon() -> FileResponse:
     Returns:
         FileResponse: Image.
     """
-    LOGGER.Log(Msg(msg="fetch favicon"))
+    LOGGER.Log(Msg(lvl=1, msg="fetch favicon"))
     return FileResponse(favicon_path)

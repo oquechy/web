@@ -1,5 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor
 
+import os.path
+from pathlib import Path
+
 import grpc
 
 from grpc_logger.definitions.builds.service_pb2 import Null
@@ -10,7 +13,10 @@ from grpc_logger.definitions.builds.service_pb2_grpc import \
 
 class Service(LogServiceServicer):
     def Log(self, request, _):
-        print(request.msg)
+        prefix = "out"
+        Path(prefix).mkdir(parents=True, exist_ok=True)
+        with open(os.path.join(prefix, "log"), "a") as f:
+            print(request.msg, file=f)
         return Null()
 
 
@@ -20,7 +26,7 @@ def execute_server():
     server.add_insecure_port("[::]:3000")
     server.start()
 
-    print("The server is up and running...")
+    print("The log server is up and running...")
     server.wait_for_termination()
 
 

@@ -123,14 +123,6 @@ protobuf = ">=3.15.0,<5.0.0dev"
 grpc = ["grpcio (>=1.0.0,<2.0.0dev)"]
 
 [[package]]
-name = "grpc-testing"
-version = "1.0.0"
-description = "Please install the official package with: pip install grpcio-testing"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "grpcio"
 version = "1.49.1"
 description = "HTTP/2-based RPC framework"
@@ -238,6 +230,25 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
+
+[[package]]
+name = "parameterized"
+version = "0.8.1"
+description = "Parameterized testing with any Python test framework"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+dev = ["jinja2"]
+
+[[package]]
+name = "parametrized"
+version = "0.1"
+description = "A decorator collection allowing for simple parametrized test case definitions."
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "pluggy"
@@ -504,7 +515,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "7135606095575e70e9fc52e76ebfbc56247ca3ed5765f564421e033202244a79"
+content-hash = "7b3876ebf7ffea0d2544962973be452a1021203eabd2f070545d0b87e670c4e4"
 
 [metadata.files]
 anyio = [
@@ -546,9 +557,6 @@ fastapi = [
 googleapis-common-protos = [
     {file = "googleapis-common-protos-1.56.4.tar.gz", hash = "sha256:c25873c47279387cfdcbdafa36149887901d36202cb645a0e4f29686bf6e4417"},
     {file = "googleapis_common_protos-1.56.4-py2.py3-none-any.whl", hash = "sha256:8eb2cbc91b69feaf23e32452a7ae60e791e09967d81d4fcc7fc388182d1bd394"},
-]
-grpc-testing = [
-    {file = "grpc-testing-1.0.0.tar.gz", hash = "sha256:d9eb63e89673a70860090ab74ca13c8e23e0d24c70bad4edc3415562108bb1ea"},
 ]
 grpcio = [
     {file = "grpcio-1.49.1-cp310-cp310-linux_armv7l.whl", hash = "sha256:fd86040232e805b8e6378b2348c928490ee595b058ce9aaa27ed8e4b0f172b20"},
@@ -745,6 +753,14 @@ opencv-python = [
 packaging = [
     {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522"},
     {file = "packaging-21.3.tar.gz", hash = "sha256:dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb"},
+]
+parameterized = [
+    {file = "parameterized-0.8.1-py2.py3-none-any.whl", hash = "sha256:9cbb0b69a03e8695d68b3399a8a5825200976536fe1cb79db60ed6a4c8c9efe9"},
+    {file = "parameterized-0.8.1.tar.gz", hash = "sha256:41bbff37d6186430f77f900d777e5bb6a24928a1c46fb1de692f8b52b8833b5c"},
+]
+parametrized = [
+    {file = "parametrized-0.1.tar.gz", hash = "sha256:ad55c4d803715bd921869701757bd3604dfa1deacdee53e835c0a4840ddb102d"},
+    {file = "parametrized-0.1.zip", hash = "sha256:f2d42384fee14ecceb09156a2219415c9a92af998b183092bc7f27ba3fd3c7f5"},
 ]
 pluggy = [
     {file = "pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},

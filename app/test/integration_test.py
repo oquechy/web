@@ -3,15 +3,11 @@ from fastapi.testclient import TestClient
 import random
 
 
-from ..main import app
+from ..closet_server import app
 from .. import db
 
 
 import pytest
-import logging
-
-LOGGER = logging.getLogger(__name__)
-
 
 @pytest.mark.integration_test
 def test_show_all():

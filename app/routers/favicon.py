@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 from fastapi.responses import FileResponse
 
-import os.path
+from app.log import Level, log
+
 
 router = APIRouter()
 
@@ -15,5 +16,5 @@ async def favicon() -> FileResponse:
     Returns:
         FileResponse: Image.
     """
-    print('get favicon', os.path.isfile(favicon_path))
+    log(Level.INFO, "fetch favicon")
     return FileResponse(favicon_path)

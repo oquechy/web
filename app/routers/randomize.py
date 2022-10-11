@@ -10,6 +10,8 @@ import os
 from app.collage import make_collage, save_collage
 import app.db as db
 
+from app.log import Level, log
+
 router = APIRouter()
 
 
@@ -29,6 +31,7 @@ async def randomize(season: Season) -> FileResponse:
         FileResponse: Image of the outfit.
     """
     imgs = []
+    log(Level.INFO, "randomize outfit")
     match season:
         case Season.summer:
             imgs.append(random.choice(db.top()))
@@ -45,6 +48,7 @@ async def randomize(season: Season) -> FileResponse:
             imgs.append(random.choice(db.bags()))
 
         case _:
+            log(Level.ERRO, "unknown season", str(season))
             return {"unknown season": season}
 
     pic = make_collage(imgs)

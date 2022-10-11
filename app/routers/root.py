@@ -6,6 +6,8 @@ from pydantic import BaseModel
 
 import app.db as db
 
+from app.log import Level, log
+
 router = APIRouter()
 
 
@@ -30,4 +32,5 @@ async def main() -> Closet:
         summer_looks=db.summer_looks(),
         winter_looks=db.winter_looks(),
     )
+    log(Level.INFO, "fetch stats")
     return resp

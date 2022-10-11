@@ -6,6 +6,8 @@ import os
 from app.collage import make_collage, save_collage
 import app.db as db
 
+from app.log import Level, log
+
 router = APIRouter()
 
 
@@ -20,4 +22,5 @@ async def closet() -> FileResponse:
 
     prefix = os.path.join("out", "closet")
     path = save_collage(pic, prefix)
+    log(Level.INFO, "fetch closet")
     return FileResponse(path)
